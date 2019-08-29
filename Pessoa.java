@@ -1,4 +1,3 @@
-
 package atividade2;
 
 abstract class Pessoa {

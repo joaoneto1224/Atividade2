@@ -1,42 +1,46 @@
 package atividade2;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Metodos {
-    ArrayList<Aluno> aluno = new ArrayList();
+    private List<Aluno> ListAluno = new ArrayList();
+    private List<Professor> prof = new ArrayList();
+    
     public void salvarAluno(){
-        ArrayList<Aluno> aluno = new ArrayList();
+        
         Aluno al = new Aluno();
         al.setNome(JOptionPane.showInputDialog("Informe o nome do Aluno"));
         al.setIdade(Integer.parseInt(JOptionPane.showInputDialog("Informe a idade do Aluno")));
         al.setCpf(Integer.parseInt(JOptionPane.showInputDialog("Informe o cpf do Aluno")));
         al.setRa(Integer.parseInt(JOptionPane.showInputDialog("Informe o Ra do Aluno")));
         al.setSexo(JOptionPane.showInputDialog("Informe o sexo do Aluno"));
+                
         
-        
-        aluno.add(al);
+        ListAluno.add(al);
     }
-    ArrayList<Professor> prof = new ArrayList();
+    
     public void salvarProfessor(){
-        ArrayList<Professor> prof = new ArrayList();
+        
         Professor p = new Professor();
         p.setNome(JOptionPane.showInputDialog("Informe o nome do Professor"));
         p.setIdade(Integer.parseInt(JOptionPane.showInputDialog("Informe a Idade do Professor")));
         p.setCpf(Integer.parseInt(JOptionPane.showInputDialog("Informe o cpf do Professor")));
         p.setSiape(Integer.parseInt(JOptionPane.showInputDialog("Informe o Siape do Professor")));
         p.setSexo(JOptionPane.showInputDialog("Informe o Sexo do Professor"));
-        
-        
+             
         prof.add(p);
     }
     public void exibirAluno(){
-        Iterator<Aluno> iterator = aluno.iterator();
         int i = 0;
-        while (iterator.hasNext()) {
-            JOptionPane.showMessageDialog(null,"Posição"+ i+"- "+ iterator.next());
-            i++;
+        
+        for( i = 0;i<ListAluno.size();i++){
+            JOptionPane.showMessageDialog(null,"Nome: "+ ListAluno.get(i).getNome() +"\n"+ "Idade: "+ListAluno.get(i).getIdade() +"\n"+ "Cpf: "+ListAluno.get(i).getCpf() +"\n"+"Ra: "+ ListAluno.get(i).getRa() +"\n"+"Sexo: "+ ListAluno.get(i).getSexo());
+            ;
         }
+        
+
     }
     public void exibirProfessor(){
         Iterator<Professor> iterator = prof.iterator();
@@ -47,13 +51,13 @@ public class Metodos {
         }
     }
     public void removerAluno(int ra){
-        for(int i = 0; i < aluno.size(); i++)
+        for(int i = 0; i < ListAluno.size(); i++)
         {
-            Aluno a = aluno.get(i);
+            Aluno a = ListAluno.get(i);
 
             if(a.getRa()== ra)
             {
-                aluno.remove(a);
+                ListAluno.remove(a);
                 JOptionPane.showMessageDialog(null,"Removido com Sucesso!", "Atenção",2 );
                 break;
             }
@@ -67,9 +71,10 @@ public class Metodos {
             if(p.getSiape()== siape)
             {
                 prof.remove(p);
-                JOptionPane.showMessageDialog(null,"Removido com Sucesso!", "Atenção",2 );
+                JOptionPane.showMessageDialog(null,"Removido com Sucesso!", "AtenÃ§Ã£o",2 );
                 break;
             }
         }
     }
 }
+
